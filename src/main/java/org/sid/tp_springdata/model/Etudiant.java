@@ -10,8 +10,7 @@ import org.sid.tp_springdata.enums.Genre;
 @Entity @Data @AllArgsConstructor @NoArgsConstructor @Builder
 @Table (name = "students")
 public class Etudiant {
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        @Id @GeneratedValue(strategy = GenerationType.AUTO)
         Long id;
         @Column(name="nom_etudiant", nullable=false)
         String nom;
@@ -19,5 +18,8 @@ public class Etudiant {
         String prenom;
         @Enumerated(EnumType.STRING)
         Genre genre;
+        @ManyToOne
+        @JoinColumn(name = "centre_id")
+        private Centre centreId;
     }
 
